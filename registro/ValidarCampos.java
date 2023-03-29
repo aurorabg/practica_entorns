@@ -1,7 +1,9 @@
+package registro;
+
 import java.util.Random;
 
 public class ValidarCampos {
-    private static final String[] nombresExistentes = { "Juan_124", "Maria_456", "Pedro-789", "Sofia_123", "Luisa-456",
+    private static final String[] usuarios = { "Juan_124", "Maria_456", "Pedro-789", "Sofia_123", "Luisa-456",
             "Pablo_789", "Ana_123", "Carlos-456", "Lucia_789", "Marta_123" };
     private String nombre;
     private String email;
@@ -9,7 +11,7 @@ public class ValidarCampos {
     private String codigo;
 
     public void validarCampos(ValidarCampos registro) {
-        if (!validarNombre(registro.nombre)) {
+        if (!validarNombre(registro.nombre, usuarios)) {
             System.out.println("El nombre de usuario no cumple con las restricciones.");
             return;
         }
@@ -55,11 +57,7 @@ public class ValidarCampos {
         return true;
     }
 
-    private static boolean validarNombre(String nombre) {
-        // Declara un Array de Strings con algunos nombres de usuario existentes.
-        String[] nombresExistentes = { "Juan_123", "Maria_456", "Pedro-789", "Sofia_123", "Luisa-456",
-                "Pablo_789", "Ana_123", "Carlos-456", "Lucia_789", "Marta_123" };
-
+    private static boolean validarNombre(String nombre, String[] usuarios) {
         // Comprueba si la longitud del nombre de usuario es mayor que 16 caracteres.
         // Si se cumple esta condición, se imprime un mensaje de error y se finaliza el
         // programa con la instrucción "return".
@@ -90,7 +88,7 @@ public class ValidarCampos {
         // y busca si el nombre
         // de usuario ingresado ya existe en una lista preexistente de nombres de
         // usuario, "nombresExistentes".
-        for (String nombreExistente : nombresExistentes) {
+        for (String nombreExistente : usuarios) {
             if (nombre.equalsIgnoreCase(nombreExistente)) {
                 System.out.println("El nombre de usuario ya existe.");
                 return false;
@@ -158,7 +156,7 @@ public class ValidarCampos {
     }
 
     public static String[] getNombresexistentes() {
-        return nombresExistentes;
+        return usuarios;
     }
 
     public String getNombre() {
