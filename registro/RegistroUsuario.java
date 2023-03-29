@@ -1,5 +1,3 @@
-package registro;
-
 public class RegistroUsuario {
     public static void main(String[] args) {
         RegistroUsuario r = new RegistroUsuario();
