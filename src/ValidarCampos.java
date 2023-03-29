@@ -33,27 +33,6 @@ public class ValidarCampos {
             return;
         }
 
-        /*Condición para saber si la contraseña cumple con la largaría correcta */
-        if (password.length() != 8) {
-            //Le hacemos saber al usuario que ha ocurrido un error
-            System.out.println("La contraseña no cumple con las restricciones.");
-            return;
-        }
-
-        /*Condición para saber si la contraseña cumple con que la primera letra esté en mayúscula*/
-        if (!Character.isUpperCase(password.charAt(0))) {
-            //Le hacemos saber al usuario que ha ocurrido un error
-            System.out.println("La contraseña no cumple con las restricciones.");
-            return;
-        }
-
-        /*Condición para saber si la contraseña cumple con los símbolos y carácteres permitidos*/
-        if (!password.matches("^[A-Za-z0-9]*[@\\-_#][0-9]{2}$")) {
-            //Le hacemos saber al usuario que ha ocurrido un error
-            System.out.println("La contraseña no cumple con las restricciones.");
-            return;
-        }
-
         String codigoAutogenerado = generarCodigoSeguridad();
         System.out.println("Código autogenerado: " + codigoAutogenerado);
         /*Condición para saber si el código autogenerado es igual al introducido*/
@@ -66,6 +45,30 @@ public class ValidarCampos {
         /*Imprimimos por pantalla si el registro se ha realizado con éxito*/
         System.out.println(
                 "El registro se ha realizado con éxito: " + nombre + " " + email + " " + password + " " + codigo);
+    }
+
+    private static boolean validarPassword(String password) {
+        /*Condición para saber si la contraseña cumple con la largaría correcta */
+        if (password.length() != 8) {
+            //Le hacemos saber al usuario que ha ocurrido un error
+            System.out.println("La contraseña no cumple con las restricciones.");
+            return false;
+        }
+
+        /*Condición para saber si la contraseña cumple con que la primera letra esté en mayúscula*/
+        if (!Character.isUpperCase(password.charAt(0))) {
+            //Le hacemos saber al usuario que ha ocurrido un error
+            System.out.println("La contraseña no cumple con las restricciones.");
+            return false;
+        }
+
+        /*Condición para saber si la contraseña cumple con los símbolos y carácteres permitidos*/
+        if (!password.matches("^[A-Za-z0-9]*[@\\-_#][0-9]{2}$")) {
+            //Le hacemos saber al usuario que ha ocurrido un error
+            System.out.println("La contraseña no cumple con las restricciones.");
+            return false;
+        }
+        return true;
     }
 
     /*Método para generar un código de seguridad de forma aleatoria*/
