@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class ValidarCampos {
-    private static final String[] nombresExistentes = { "Juan_123", "Maria_456", "Pedro-789", "Sofia_123", "Luisa-456",
+    private static final String[] nombresExistentes = { "Juan_124", "Maria_456", "Pedro-789", "Sofia_123", "Luisa-456",
             "Pablo_789", "Ana_123", "Carlos-456", "Lucia_789", "Marta_123" };
     private String nombre;
     private String email;
