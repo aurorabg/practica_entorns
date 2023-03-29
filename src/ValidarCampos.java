@@ -8,13 +8,6 @@ public class ValidarCampos {
     private String password;
     private String codigo;
 
-    public ValidarCampos(String nombre, String email, String password, String codigo) {
-        this.nombre = nombre;
-        this.email = email;
-        this.password = password;
-        this.codigo = codigo;
-    }
-
     public void validarCampos(ValidarCampos registro) {
         if (!validarNombre(registro.nombre)) {
             System.out.println("El nombre de usuario no cumple con las restricciones.");
@@ -164,4 +157,61 @@ public class ValidarCampos {
         return sb.toString();
     }
 
+    public static String[] getNombresexistentes() {
+        return nombresExistentes;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public ValidarCampos(String email, String password, String codigo) {
+        this.email = email;
+        this.password = password;
+        this.codigo = codigo;
+    }
+
+    public ValidarCampos(String email) {
+        this.email = email;
+    }
+
+    public ValidarCampos() {
+        this.email = "jdieojww0f";
+        this.password = "ncwoei";
+    }
+
+    public ValidarCampos(String nombre, String email, String password, String codigo) {
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.codigo = codigo;
+    }
 }
