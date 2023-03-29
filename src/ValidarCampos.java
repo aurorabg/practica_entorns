@@ -55,13 +55,13 @@ public class ValidarCampos {
         // Si se cumple esta condición, se imprime un mensaje de error y se finaliza el programa con la instrucción "return".
         if (nombre.length() > 16) {
             System.out.println("El nombre de usuario no cumple con las restricciones.");
-            return true;
+            return false;
         }
         // Comprueba si el primer carácter del nombre de usuario es una letra mayúscula.
         // Si esta condición no se cumple, se imprime un mensaje de error y se finaliza el programa con la instrucción "return".
         if (!Character.isUpperCase(nombre.charAt(0))) {
             System.out.println("El nombre de usuario no cumple con las restricciones.");
-            return true;
+            return false;
         }
         // Usa una expresión regular para verificar si el nombre de usuario cumple con un patrón específico.
         // El patrón requerido es que el nombre de usuario comience con una letra mayúscula seguida de una o
@@ -69,17 +69,17 @@ public class ValidarCampos {
         // se cumple, se imprime un mensaje de error y se finaliza el programa con la instrucción "return".
         if (!nombre.matches("^[A-Za-z][a-z]*[-_][0-9]{3}$")) {
             System.out.println("El nombre de usuario no cumple con las restricciones.");
-            return true;
+            return false;
         }
         // validación adicional que se realiza después de las verificaciones anteriores y busca si el nombre
         // de usuario ingresado ya existe en una lista preexistente de nombres de usuario, "nombresExistentes".
         for (String nombreExistente : nombresExistentes) {
             if (nombre.equalsIgnoreCase(nombreExistente)) {
                 System.out.println("El nombre de usuario ya existe.");
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private static String generarCodigoSeguridad() {
