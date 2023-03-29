@@ -2,29 +2,50 @@ import java.util.Random;
 
 public class ValidarCampos {
     public static void validarCampos(String nombre, String email, String password, String codigo) {
+        if(validarNom(nombre)&&validarEmail(email)&&validarContraseña(password)&&validarCodigoSeguridad(codigo)){
+            System.out.println(
+                            "El registro se ha realizado con éxito: " + nombre + " " + email + " " + password + " " + codigo);
+        }
+    }
 
-        if (validarNom(nombre)) return;
-        if (validarEmail(email)) return;
+    private static boolean validarContraseña(String password) {
+        /* Condición para saber si la contraseña cumple con la largaría correcta */
         if (password.length() != 8) {
+            // Le hacemos saber al usuario que ha ocurrido un error
             System.out.println("La contraseña no cumple con las restricciones.");
-            return;
+            return false;
         }
+        /*
+         * Condición para saber si la contraseña cumple con que la primera letra esté en
+         * mayúscula
+         */
         if (!Character.isUpperCase(password.charAt(0))) {
+            // Le hacemos saber al usuario que ha ocurrido un error
             System.out.println("La contraseña no cumple con las restricciones.");
-            return;
+            return false;
         }
+        /*
+         * Condición para saber si la contraseña cumple con los símbolos y carácteres
+         * permitidos
+         */
         if (!password.matches("^[A-Za-z0-9]*[@\\-_#][0-9]{2}$")) {
+            // Le hacemos saber al usuario que ha ocurrido un error
             System.out.println("La contraseña no cumple con las restricciones.");
-            return;
+            return false;
         }
+        return true;
+    }
+
+    private static boolean validarCodigoSeguridad(String codigo) {
         String codigoAutogenerado = generarCodigoSeguridad();
         System.out.println("Código autogenerado: " + codigoAutogenerado);
+        /* Condición para saber si el código autogenerado es igual al introducido */
         if (!codigo.equals(codigoAutogenerado)) {
+            // Le hacemos saber al usuario que ha ocurrido un error
             System.out.println("El código de seguridad no coincide.");
-            return;
+            return false;
         }
-        System.out.println(
-                "El registro se ha realizado con éxito: " + nombre + " " + email + " " + password + " " + codigo);
+        return true;
     }
 
     private static boolean validarEmail(String email) {
@@ -32,7 +53,7 @@ public class ValidarCampos {
         // Si no se cumple esta condición, se imprime un mensaje de error y se finaliza el programa con la instrucción "return".
         if (!email.contains("@")) {
             System.out.println("El correo electrónico no cumple con las restricciones.");
-            return true;
+            return false;
         }
         // verifica si una dirección de correo electrónico cumple con ciertas restricciones.
         // Utiliza una expresión regular para verificar si la dirección de correo electrónico termina en
@@ -41,9 +62,9 @@ public class ValidarCampos {
         // Si la dirección de correo electrónico no cumple con estas restricciones, se imprime un mensaje y se sale del método actual
         if (!email.matches("^.*@(paucasesnovescifp|yahoo|gmail|hotmail)\\.(com|es|cat)$")) {
             System.out.println("El correo electrónico no cumple con las restricciones.");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private static boolean validarNom(String nombre) {
