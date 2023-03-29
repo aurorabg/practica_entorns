@@ -1,7 +1,9 @@
+package registro;
+
 import java.util.Random;
 
 public class ValidarCampos {
-    private static final String[] nombresExistentes = { "Juan_124", "Maria_456", "Pedro-789", "Sofia_123", "Luisa-456",
+    private static final String[] usuarios = { "Juan_124", "Maria_456", "Pedro-789", "Sofia_123", "Luisa-456",
             "Pablo_789", "Ana_123", "Carlos-456", "Lucia_789", "Marta_123" };
     private String nombre;
     private String email;
@@ -16,7 +18,7 @@ public class ValidarCampos {
     }
 
     public void validarCampos(ValidarCampos registro) {
-        if (!validarNombre(registro.nombre)) {
+        if (!validarNombre(usuarios, registro.nombre)) {
             System.out.println("El nombre de usuario no cumple con las restricciones.");
             return;
         }
@@ -94,8 +96,8 @@ public class ValidarCampos {
         validación adicional que se realiza después de las verificaciones anteriores y busca si el nombre
         de usuario ingresado ya existe en una lista preexistente de nombres de usuario, "nombresExistentes".
          */
-        for (String usuarios : usuarios) {
-            if (nombre.equalsIgnoreCase(usuarios)) {
+        for (String array : usuarios) {
+            if (nombre.equalsIgnoreCase(array)) {
                 System.out.println("El nombre de usuario ya existe.");
                 return false;
             }
