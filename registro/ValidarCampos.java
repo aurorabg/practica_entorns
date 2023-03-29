@@ -1,5 +1,3 @@
-package registro;
-
 import java.util.Random;
 
 public class ValidarCampos {
@@ -11,24 +9,37 @@ public class ValidarCampos {
     private String codigo;
 
     public void validarCampos(ValidarCampos registro) {
+        // Condición de si el método cumple la condición notifica al usuario del error
         if (!validarNombre(registro.nombre, usuarios)) {
             System.out.println("El nombre de usuario no cumple con las restricciones.");
             return;
         }
+
+        // Condición de si el método cumple la condición notifica al usuario del error
         if (!validarEmail(registro.email)) {
             System.out.println("El correo electrónico no cumple con las restricciones.");
             return;
         }
+
+        // Condición de si el método cumple la condición notifica al usuario del error
         if (!validarPassword(registro.password)) {
             System.out.println("La contraseña no cumple con las restricciones.");
             return;
         }
+
+        // Condición de si el método cumple la condición notifica al usuario del error
         if (!validarCodigo(registro.codigo)) {
             System.out.println("El código de seguridad no coincide.");
             return;
         }
-        System.out.println("El registro se ha realizado con éxito: " + registro.nombre + " " + registro.email + " "
-                + registro.password + " " + registro.codigo);
+
+        // Condición de si el método cumple con todas las condiciones notifica al
+        // usuario del que el registro ha ido bien
+        if (validarNombre(registro.nombre, usuarios) && validarEmail(registro.email)
+                && validarPassword(registro.password) && validarCodigo(registro.codigo)) {
+            System.out.println("El registro se ha realizado con éxito: " + registro.nombre + " " + registro.email + " "
+                    + registro.password + " " + registro.codigo);
+        }
     }
 
     private static boolean validarEmail(String email) {
